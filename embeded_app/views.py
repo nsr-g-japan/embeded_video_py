@@ -20,6 +20,8 @@ def homepage(request):
     json_object = json.loads(response.text)
     print(type(json_object))
     print(response.text)
-    return render(request, 'landing_page.html', json_object)
-
+    url = 'https://player.vdocipher.com/v2/?otp={}&playbackInfo={}'.format(json_object['otp'], json_object['playbackInfo'])
+    print(url)
+    return render(request, 'landing_page.html', {"url":url})
+    #src="https://player.vdocipher.com/v2/?otp=[[REPLACE_WITH_OTP]]&playbackInfo=
     #print(response.text)
