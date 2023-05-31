@@ -29,7 +29,7 @@ def homepage(request):
             {'type': 'rtext', 'text': 'Private-IP:' + IPAddr, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
              'interval': '5000'},
 
-            {'type': 'rtext', 'text': 'User Name:' + username, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
+            {'type': 'rtext', 'text': 'User Name:' + hostname, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
              'interval': '5000'}
         ])
     })
