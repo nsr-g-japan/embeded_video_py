@@ -15,7 +15,7 @@ def homepage(request):
     url = "https://dev.vdocipher.com/api/videos/e7cc59d26da7440090daf9918d6d3b26/otp"
     water_mark = '\u00A9'
     water_mark += 'copyright by Firmbond K.K'
-    print(water_mark)
+    print(water_mark, hostname)
     payload = json.dumps({
         "annotate": json.dumps([
             {'type': 'rtext', 'text': water_mark, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
