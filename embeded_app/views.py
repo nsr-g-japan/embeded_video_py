@@ -12,6 +12,7 @@ def homepage(request):
     #{'type': 'rtext', 'text': 'Public-IP:' + system_ip, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15','interval': '5000'},
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
+    print(socket.gethostbyaddr(IPAddr))
     url = "https://dev.vdocipher.com/api/videos/e7cc59d26da7440090daf9918d6d3b26/otp"
     water_mark = '\u00A9'
     water_mark += 'copyright by Firmbond K.K'
