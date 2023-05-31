@@ -1,6 +1,9 @@
 import os
-from urllib.request import urlopen
-import re as r
+# from urllib.request import urlopen
+# import re as r
+import public_ip as ip
+
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -11,7 +14,7 @@ from ipware import get_client_ip
 
 # Create your views here.
 def homepage(request):
-    system_ip = getIP()
+    system_ip = ip.get()
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
 
@@ -25,8 +28,8 @@ def homepage(request):
     payload = json.dumps({
         "annotate": json.dumps([
             {'type': 'rtext', 'text': water_mark, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
-            {'type': 'rtext', 'text': IPAddr , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
-            {'type': 'rtext', 'text': system_ip , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'}
+            {'type': 'rtext', 'text': 'Private-IP:'+IPAddr , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
+            {'type': 'rtext', 'text': 'Public-IP:'+system_ip , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'}
         ])
     })
     headers = {
@@ -48,10 +51,3 @@ def homepage(request):
     # src="https://player.vdocipher.com/v2/?otp=[[REPLACE_WITH_OTP]]&playbackInfo=
     # print(response.text)
 
-def getIP():
-    d = str(urlopen('http://checkip.dyndns.com/')
-			.read())
-
-    return r.compile(r'Address: (\d+\.\d+\.\d+\.\d+)').search(d).group(1)
-
-print(getIP())
