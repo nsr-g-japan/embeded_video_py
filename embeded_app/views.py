@@ -26,9 +26,9 @@ def homepage(request):
     payload = json.dumps({
         "annotate": json.dumps([
             {'type': 'text', 'text': IPAddr, 'alpha': '0.60', 'x': '10', 'y': '140',
-             'color': '0xFF0000', 'size': '10'},
-            {'type': 'text', 'text': water_mark, 'alpha': '0.60', 'x': '10', 'y': '160', 'color': '0xFF0000', 'size': '10',
-             'interval': '5000'}
+             'color': '0xFF0000', 'size': '12'},
+            {'type': 'text', 'text': water_mark, 'alpha': '0.60', 'x': '10', 'y': '160',
+             'color': '0xFF0000', 'size': '12'}
 
 
 
