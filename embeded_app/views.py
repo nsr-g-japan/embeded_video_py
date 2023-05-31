@@ -15,7 +15,8 @@ def homepage(request):
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
     print(socket.gethostbyaddr(IPAddr))
-
+    #{'type': 'rtext', 'text': 'User Name:' + hostname, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'}
+    #{'type': 'rtext', 'text': 'Private-IP:' + IPAddr, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15','interval': '5000'},
     username = getpass.getuser()
     print(username)
     url = "https://dev.vdocipher.com/api/videos/e7cc59d26da7440090daf9918d6d3b26/otp"
@@ -26,11 +27,11 @@ def homepage(request):
         "annotate": json.dumps([
             {'type': 'rtext', 'text': water_mark, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
              'interval': '5000'},
-            {'type': 'rtext', 'text': 'Private-IP:' + IPAddr, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
-             'interval': '5000'},
+            {'type': 'text', 'text': 'Private-IP:' + IPAddr, 'alpha': '0.30', 'x': '40', 'y': '130',
+             'color': '0xFF0000', 'size': '13'}
 
-            {'type': 'rtext', 'text': 'User Name:' + hostname, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
-             'interval': '5000'}
+
+
         ])
     })
     headers = {
