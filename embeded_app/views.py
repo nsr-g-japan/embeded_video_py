@@ -4,7 +4,8 @@ from django.http import HttpResponse
 import requests
 import json
 import socket
-import os
+import getpass
+
 
 
 # Create your views here.
@@ -14,7 +15,9 @@ def homepage(request):
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
     print(socket.gethostbyaddr(IPAddr))
-    print(os.getlogin())
+
+    username = getpass.getuser()
+    print(username)
     url = "https://dev.vdocipher.com/api/videos/e7cc59d26da7440090daf9918d6d3b26/otp"
     water_mark = '\u00A9'
     water_mark += 'copyright by Firmbond K.K'
@@ -26,7 +29,7 @@ def homepage(request):
             {'type': 'rtext', 'text': 'Private-IP:' + IPAddr, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
              'interval': '5000'},
 
-            {'type': 'rtext', 'text': 'User Name:' + hostname, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
+            {'type': 'rtext', 'text': 'User Name:' + username, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
              'interval': '5000'}
         ])
     })
