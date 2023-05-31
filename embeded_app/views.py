@@ -1,26 +1,15 @@
-import os
-# from urllib.request import urlopen
-# import re as r
 import public_ip as ip
-
-
 from django.shortcuts import render
 from django.http import HttpResponse
-
 import requests
 import json
 import socket
-from ipware import get_client_ip
 
 # Create your views here.
 def homepage(request):
     system_ip = ip.get()
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
-
-
-    print("Your Computer Name is:" + hostname)
-    print("Your Computer IP Address is:" + IPAddr)
     url = "https://dev.vdocipher.com/api/videos/e7cc59d26da7440090daf9918d6d3b26/otp"
     water_mark = '\u00A9'
     water_mark += 'copyright by Firmbond K.K'
@@ -45,10 +34,5 @@ def homepage(request):
     url_pb_01 = 'https://player.vdocipher.com/v2/?otp={}&playbackInfo={}'.format(json_object['otp'],
                                                                                  json_object['playbackInfo'])
 
-    #return HttpResponse(response)
-    print(os.system('ipconfig'))
 
     return render(request, 'landing_page.html', {"url": url_pb_01})
-    # src="https://player.vdocipher.com/v2/?otp=[[REPLACE_WITH_OTP]]&playbackInfo=
-    # print(response.text)
-
