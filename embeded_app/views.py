@@ -1,13 +1,15 @@
-import public_ip as ip
+# import public_ip as ip
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 import json
 import socket
 
+
 # Create your views here.
 def homepage(request):
-    system_ip = ip.get()
+    # system_ip = ip.get()
+    #{'type': 'rtext', 'text': 'Public-IP:' + system_ip, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15','interval': '5000'},
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
     url = "https://dev.vdocipher.com/api/videos/e7cc59d26da7440090daf9918d6d3b26/otp"
@@ -16,10 +18,13 @@ def homepage(request):
     print(water_mark)
     payload = json.dumps({
         "annotate": json.dumps([
-            {'type': 'rtext', 'text': water_mark, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
-            {'type': 'rtext', 'text': 'Private-IP:'+IPAddr , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
-            {'type': 'rtext', 'text': 'Public-IP:'+system_ip , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
-            {'type': 'rtext', 'text': 'User Name:' + hostname, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'}
+            {'type': 'rtext', 'text': water_mark, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
+             'interval': '5000'},
+            {'type': 'rtext', 'text': 'Private-IP:' + IPAddr, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
+             'interval': '5000'},
+
+            {'type': 'rtext', 'text': 'User Name:' + hostname, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15',
+             'interval': '5000'}
         ])
     })
     headers = {
@@ -33,6 +38,5 @@ def homepage(request):
 
     url_pb_01 = 'https://player.vdocipher.com/v2/?otp={}&playbackInfo={}'.format(json_object['otp'],
                                                                                  json_object['playbackInfo'])
-
 
     return render(request, 'landing_page.html', {"url": url_pb_01})
