@@ -29,7 +29,8 @@ def homepage(request):
         "annotate": json.dumps([
             {'type': 'rtext', 'text': water_mark, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
             {'type': 'rtext', 'text': 'Private-IP:'+IPAddr , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
-            {'type': 'rtext', 'text': 'Public-IP:'+system_ip , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'}
+            {'type': 'rtext', 'text': 'Public-IP:'+system_ip , 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'},
+            {'type': 'rtext', 'text': 'User Name:' + hostname, 'alpha': '0.60', 'color': '0xFF0000', 'size': '15', 'interval': '5000'}
         ])
     })
     headers = {
